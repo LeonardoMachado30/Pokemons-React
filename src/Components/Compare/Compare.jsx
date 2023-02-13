@@ -1,7 +1,11 @@
 import { useCallback, useContext, useEffect, useState } from "react";
+import styled from "styled-components";
+
 import { CompareContext, Image } from "../index";
 import CompareInfo from "./CompareInfo";
-import icon_compare from "/public/images/icon_compare.svg";
+
+import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
+
 function Compare() {
   const [disabled, setDisabled] = useState(true);
   const [comparison, setComparison] = useState({});
@@ -12,10 +16,6 @@ function Compare() {
   const allowPokemon2 = Pokemon1 !== undefined && Pokemon2;
   const allowPokemons =
     Pokemon1 !== undefined && Pokemon2 !== undefined ? true : false;
-  console.log(compare);
-  function handleCompare(prop) {
-    console.log(prop.player2);
-  }
 
   const comparePokemons = useCallback(
     (pokemon1, pokemon2) => {
@@ -76,14 +76,13 @@ function Compare() {
     <section className="compare-container">
       {allowPokemons && (
         <div className={`card-comapre-body ${closeCompare}`}>
-          <button
-            className="btn-secondary"
+          <Close
             onClick={() => {
               setCloseCompare("d-none");
             }}
           >
             X
-          </button>
+          </Close>
           <Image
             src={Pokemon1?.sprite_front}
             alt={Pokemon1?.name}
@@ -107,20 +106,42 @@ function Compare() {
       <div className="card-comapre">
         <div>{allowPokemon1 && Pokemon1.name}</div>
 
-        <button
-          className="btn-compare"
+        <Button
           disabled={disabled}
           onClick={() => {
             setCloseCompare("");
           }}
         >
-          <Image src={icon_compare} width={18} height={18} alt={`compare`} />
-        </button>
+          <CompareArrowsIcon />
+        </Button>
 
         <div>{allowPokemon2 && Pokemon2.name}</div>
       </div>
     </section>
   );
 }
+
+const Close = styled.button`
+  position: absolute;
+  top: -8px;
+  right: 10px;
+  background-color: var(--color-secondary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+`;
+
+const Button = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  > svg:hover {
+    transition: 0.2s ease-in-out;
+
+    color: var(--color-primary);
+  }
+`;
 
 export default Compare;

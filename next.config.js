@@ -3,7 +3,7 @@
 
 const isProd =
   process.env.NODE_ENV === "production"
-    ? "https://leonardomachado30.github.io/frontend-test-two/"
+    ? "https://front-end-pokemons.vercel.app/"
     : process.env.STATIC_ASSETS_URL;
 
 console.log(process.env.STATIC_ASSETS_URL);

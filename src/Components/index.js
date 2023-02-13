@@ -9,8 +9,9 @@ import Loading from "./Loading/Loading";
 import Pagination from "./Pagination/Pagination";
 import Search from "./Search/Search";
 import CardList from "./CardList/CardList";
+import Historic from "./Historic/Historic";
 
-export { Card, Compare, Info, Loading, Pagination, Search, CardList };
+export { Card, Compare, Info, Loading, Pagination, Search, CardList, Historic };
 
 import Api from "../../Controllers/Api";
 import getAutoComplete from "../../Controllers/getAutoComplete";

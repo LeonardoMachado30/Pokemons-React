@@ -109,6 +109,7 @@ strong {
   margin: 0;
   gap: 70px;
   place-items: center;
+  transition: 0.2s;
 }
 
 @media screen and (max-width: 900px) {
@@ -291,16 +292,6 @@ strong {
   padding-top: 30px;
 }
 
-.search-input {
-  width: 100%;
-  height: 32px;
-  padding: 8px;
-  font-size: 1.2rem;
-  border: 1px solid #c1c1c1;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  border-radius: 8px;
-}
-
 .search-btn,
 .btn-back {
   display: flex;
@@ -422,12 +413,11 @@ strong {
 
 .info-container {
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   display: flex;
-  width: 101%;
-  justify-content: center;
+  width: 100%;
+  justify-content: space-around;
   align-items: center;
-  gap: 10px;
   padding: 0;
   border-radius: 0 0 10px 10px;
   box-shadow: 0px -8px 15px 7px rgba(0, 0, 0, 0.1);
@@ -452,12 +442,10 @@ strong {
 }
 
 .btn-primary,
-.btn-secondary,
-.btn-compare {
+.btn-secondary {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
   top: -8px;
   right: 16px;
   border: 0;
@@ -526,25 +514,6 @@ strong {
   to {
     transform: translateY(0);
   }
-}
-
-.btn-compare {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  margin: 0 auto;
-  border-radius: 8px;
-  padding: 4px;
-  max-width: 50px;
-  width: 100%;
-  height: 100%;
-  cursor: pointer !important;
-}
-
-.btn-compare:hover > img {
-  transition: 1s;
-  transform: rotate(90deg);
 }
 
 .card-comapre-body {

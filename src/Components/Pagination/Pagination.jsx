@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Pagination({ apiRequest, hideBySearch }) {
+function Pagination({ apiRequest }) {
   const [disabled, setDisabled] = useState(true);
   const [active, setActive] = useState(1);
   const [paginationCount, setpaginationCount] = useState([
@@ -51,7 +51,7 @@ function Pagination({ apiRequest, hideBySearch }) {
   };
 
   return (
-    <div className={`pagination-container ${hideBySearch}`}>
+    <div className={`pagination-container`}>
       {paginationCount.map((item, index) => {
         return (
           <div key={index}>

@@ -1,16 +1,20 @@
 import { useState, useEffect, useContext } from "react";
 import { Api, CompareContext, Image } from "../index";
 import icon_compare from "/public/images/icon_compare.svg";
-function Info({ id, handleCloseInfo }) {
+import styled from "styled-components";
+import { Skeleton } from "@mui/material";
+
+function Info({ prop }) {
   const [info, setInfo] = useState("");
   const [disabled, setDisabled] = useState(false);
   const { compare, setCompare } = useContext(CompareContext);
 
   useEffect(() => {
     document.title = "VISUALIZAÇÂO DE POKEMONS";
-    async function requestPokemon() {
-      const urlBase = `https://pokeapi.co/api/v2/pokemon/${id}`;
+    setTimeout(async () => {
+      const urlBase = `https://pokeapi.co/api/v2/pokemon/${prop.id}`;
       await Api(urlBase).then((data) => {
+        console.log(data);
         setInfo({
           id: data.id,
           name: data.name,
@@ -23,12 +27,16 @@ function Info({ id, handleCloseInfo }) {
           sprite_front: data.sprites.front_default,
         });
       });
-    }
+    }, 600);
+  }, [prop.id]);
 
-    requestPokemon();
-  }, [id]);
-
-  return (
+  return info === "" ? (
+    <Skeleton
+      sx={{ position: "absolute", bottom: -10, width: "100%" }}
+      height={66}
+      animation="wave"
+    />
+  ) : (
     <ul className={`info-container ${info === "" ? "" : "info-transition"}`}>
       <li>
         <strong>HP: </strong>
@@ -49,15 +57,7 @@ function Info({ id, handleCloseInfo }) {
         <strong>VEL: </strong>
         <p>{info.speed}</p>
       </li>
-      <li>
-        <button
-          className="btn-secondary"
-          onClick={() => handleCloseInfo({ _id: null })}
-        >
-          X
-        </button>
-      </li>
-      <li>
+      <ButtonsContainer>
         <button
           className="btn-primary"
           disabled={disabled}
@@ -81,9 +81,25 @@ function Info({ id, handleCloseInfo }) {
         >
           <Image src={icon_compare} width={18} height={20} alt={`compare`} />
         </button>
-      </li>
+
+        <Close onClick={() => prop.closeInfo()}>X</Close>
+      </ButtonsContainer>
     </ul>
   );
 }
+
+const ButtonsContainer = styled.li`
+  position: absolute;
+  top: -10px;
+  right: 10px;
+`;
+
+const Close = styled.button`
+  background-color: var(--color-secondary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+`;
 
 export default Info;

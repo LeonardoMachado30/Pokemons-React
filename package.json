@@ -12,11 +12,17 @@
     "deploy": "next build && next export && gh-pages -d out -t true"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
+    "@mui/material": "^5.11.8",
+    "axios": "^1.3.2",
     "dotenv": "^16.0.3",
     "eslint-plugin-react-hooks": "^5.0.0-next-4f8ffec45-20230115",
     "next": "13.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-string-replace": "^1.1.0",
     "styled-components": "^5.3.6",
     "touch": "^3.1.0"
   },
