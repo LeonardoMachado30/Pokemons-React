@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function Pagination({ apiRequest }) {
+function Pagination() {
   const [disabled, setDisabled] = useState(true);
   const [active, setActive] = useState(1);
   const [paginationCount, setpaginationCount] = useState([
@@ -13,7 +13,7 @@ function Pagination({ apiRequest }) {
   ]);
 
   const _handlePagination = (item) => {
-    let [offset, url] = [null];
+    let [offset, url] = [null, null];
     let verifyChacaracterNavegation =
       item.toString().includes("<") || item.toString().includes(">");
     setActive(item);
@@ -27,7 +27,7 @@ function Pagination({ apiRequest }) {
     }
 
     if (!verifyChacaracterNavegation) {
-      apiRequest(url);
+      // apiRequest(url);
       return;
     } else {
       const newPagination = paginationCount.map((_item) => {
@@ -37,7 +37,7 @@ function Pagination({ apiRequest }) {
         } else if (_item === "<") {
           return _item;
         } else {
-          return item === "<" ? _item - 1 : _item + 1;
+          // return item === "<" ? _item - 1 : _item + 1;
         }
       });
 

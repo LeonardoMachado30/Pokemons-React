@@ -101,7 +101,7 @@ strong {
 /*#endregion @===LOADING END===@ */
 
 /*#region @===CARD===@ */
-.card-list {
+/* .card-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   width: 100%;
@@ -110,7 +110,7 @@ strong {
   gap: 70px;
   place-items: center;
   transition: 0.2s;
-}
+} */
 
 @media screen and (max-width: 900px) {
   .card-list {
