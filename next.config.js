@@ -6,7 +6,6 @@ const isProd =
     ? "https://front-end-pokemons.vercel.app/"
     : process.env.STATIC_ASSETS_URL;
 
-console.log(process.env.STATIC_ASSETS_URL);
 const nextConfig = {
   reactStrictMode: true,
   assetPrefix: isProd,
@@ -16,14 +15,6 @@ const nextConfig = {
   },
   images: {
     unoptimized: true,
-  },
-  exportPathMap: async function (
-    defaultPathMap,
-    { dev, dir, outDir, distDir, buildId }
-  ) {
-    return {
-      "/": { page: "/" },
-    };
   },
 };
 
