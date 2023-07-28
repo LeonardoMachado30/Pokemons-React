@@ -14,7 +14,6 @@ function Info({ prop }) {
     setTimeout(async () => {
       const urlBase = `https://pokeapi.co/api/v2/pokemon/${prop.id}`;
       await Api(urlBase).then((data) => {
-        console.log(data);
         setInfo({
           id: data.id,
           name: data.name,

@@ -1,15 +1,11 @@
-function getAutoComplete() {
-  const pokemonList = localStorage.getItem("PokemonList");
-  if (pokemonList === undefined || pokemonList === null) {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=1279")
-      .then((resp) => resp.json())
-      .then((data) => {
-        const Arr = data.results.map((a) => a.name);
-        localStorage.setItem("PokemonList", JSON.stringify(Arr));
-      });
-  }
+async function getAutoComplete(): Promise<any> {
+  if (localStorage.getItem("PokemonList") !== null) return;
 
-  return;
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1279");
+  const data = await response.json();
+  const names: string[] = data.results.map((obj) => obj.name);
+  localStorage.setItem("PokemonList", JSON.stringify(names));
+  return names;
 }
 
 export default getAutoComplete;

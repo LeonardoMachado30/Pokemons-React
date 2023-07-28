@@ -4,21 +4,21 @@ import styled from "styled-components";
 import axios from "axios";
 import { Skeleton } from "@mui/material";
 //COMPONENTS
-import Card from "@component/Card";
-import Compare from "@component/Compare";
-import Info from "@component/Info/Info";
-import Loading from "@component/Loading";
-import Pagination from "@component/Pagination";
-import Search from "@component/Search";
-import Historic from "@component/Historic";
 import SocialButtons from "@component/SocialButtons";
+import ListPokemon from "@component/ListPokemon";
+import Pagination from "@component/Pagination";
+import Historic from "@component/Historic";
+import Loading from "@component/Loading";
+import Compare from "@component/Compare";
+import Search from "@component/Search";
+import Info from "@component/Info";
 //UTILS
 import { CompareContext, PokemonContext } from "@utils/context";
 import getAutoComplete from "@utils/getAutoComplete";
 //SERVICES
 import Pokemons from "@services/pokemon.service";
 //moodel
-import IPokemon from "@model/IPokemon";
+import IPokemons from "@model/IPokemons";
 
 export {
   Image,
@@ -27,7 +27,7 @@ export {
   Skeleton,
   styled,
   axios,
-  Card,
+  ListPokemon,
   Compare,
   Info,
   Loading,
@@ -41,4 +41,4 @@ export {
   PokemonContext,
 };
 
-export type { IPokemon };
+export type { IPokemons };

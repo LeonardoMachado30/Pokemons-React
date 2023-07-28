@@ -1,83 +1,64 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import {
-  Card,
+  ListPokemon,
   Compare,
-  CompareContext,
   Historic,
   Pagination,
   Pokemons,
   Search,
   Skeleton,
   SocialButtons,
-  axios,
-  styled,
-  useEffect,
   useState,
-  IPokemon,
+  IPokemons,
 } from "@exportDefault";
 
-interface IUrl {
-  name: string;
-  url: string;
-}
-
 export const getStaticProps: GetStaticProps<{
-  pokemon: IPokemon[];
+  pokemons: IPokemons[];
 }> = async () => {
-  const pokemons = new Pokemons();
-  const { results } = await pokemons.get();
-  const urlList = results.map((data: IUrl) => data.url);
-  let pokemon: IPokemon[] = await pokemons.getAll(urlList);
-
-  return { props: { pokemon } };
+  const _pokemons = new Pokemons();
+  const { results } = await _pokemons.get(15);
+  const urlList: string[] = results.map((data: any) => data.url);
+  const pokemons: IPokemons[] = await _pokemons.getAll(urlList);
+  return {
+    props: { pokemons },
+    revalidate: 345600, // Revalidar cada 4 días  };
+  };
 };
 
-const SkeletonContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    justify-content: center;
-  }
-`;
-
-function Home({ pokemon }: InferGetStaticPropsType<typeof getStaticProps>) {
+function Home({ pokemons }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [pokemons2, setPokemons] = useState(null);
   const [compare, setCompare] = useState({ Pokemon1: null, Pokemon2: null });
-  const countSkeleton = Array.from({ length: 6 }, (_, index) => index + 1);
-  console.log(pokemon);
+
   return (
-    <div className="container">
-      <Search setApiOptions={setPokemons} />
-      <Historic />
-      <h1 style={{ textAlign: "center" }}>LISTA DE POKEMONS</h1>
-      {/* 
+    <>
+      <div className="relative flex flex-col items-center justify-between px-5 !bg-[url('/images/background_default.png')] bg-no-repeat h-[120vh] bg-cover clound-animation">
+        <h1 className="text-center text-6xl font-bold py-4 text-white">
+          LISTA DE POKEMONS
+        </h1>
+        <Search setApiOptions={setPokemons} />
+      </div>
+      <div className="bg-[#69aa10]">
+        <section className="container !px-4 ">
+          <Historic />
+
+          {/* 
       <CompareContext.Provider
         className="container"
         value={{ compare, setCompare }}
       > */}
-      {pokemon === null ? (
-        <SkeletonContainer>
-          {countSkeleton.map((value, index) => {
-            return (
-              <Skeleton key={index} width={376} height={540} animation="wave" />
-            );
-          })}
-        </SkeletonContainer>
-      ) : (
-        <Card pokemons={pokemon} />
-      )}
 
-      {/* ITEMS FLUTUANTES */}
-      {compare.Pokemon1 !== null && <Compare />}
-      {/* </CompareContext.Provider> */}
+          <ListPokemon pokemons={pokemons} />
 
-      <Pagination />
+          {/* ITEMS FLUTUANTES */}
+          {compare.Pokemon1 !== null && <Compare />}
+          {/* </CompareContext.Provider> */}
 
-      <SocialButtons />
-    </div>
+          <Pagination />
+
+          <SocialButtons />
+        </section>
+      </div>
+    </>
   );
 }
 
