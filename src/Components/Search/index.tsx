@@ -1,15 +1,3 @@
-import {
-  useEffect,
-  useState,
-  styled,
-  getAutoComplete,
-  PokemonContext,
-  axios,
-} from "@exportDefault";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import RefreshIcon from "@mui/icons-material/Refresh";
-import reactStringReplace from "react-string-replace";
-import AutoCompletePopUp from "./AutoCompletePopUp";
 import InputSearch from "./InputSearch";
 
 function Search({ setApiOptions }) {

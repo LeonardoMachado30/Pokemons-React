@@ -10,6 +10,7 @@ import {
   useState,
   IPokemons,
 } from "@exportDefault";
+import background_default from "@assets/background_default.png";
 
 export const getStaticProps: GetStaticProps<{
   pokemons: IPokemons[];
@@ -27,10 +28,12 @@ export const getStaticProps: GetStaticProps<{
 function Home({ pokemons }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [pokemons2, setPokemons] = useState(null);
   const [compare, setCompare] = useState({ Pokemon1: null, Pokemon2: null });
+  const className =
+    "relative flex flex-col items-center justify-between px-5 !bg-[url('/images/background_default.png')] bg-no-repeat h-[120vh] bg-cover clound-animation";
 
   return (
     <>
-      <div className="relative flex flex-col items-center justify-between px-5 !bg-[url('/images/background_default.png')] bg-no-repeat h-[120vh] bg-cover clound-animation">
+      <div className={className}>
         <h1 className="text-center text-6xl font-bold py-4 text-white">
           LISTA DE POKEMONS
         </h1>
@@ -39,18 +42,9 @@ function Home({ pokemons }: InferGetStaticPropsType<typeof getStaticProps>) {
       <div className="bg-[#69aa10]">
         <section className="container !px-4 ">
           <Historic />
-
-          {/* 
-      <CompareContext.Provider
-        className="container"
-        value={{ compare, setCompare }}
-      > */}
-
           <ListPokemon pokemons={pokemons} />
 
-          {/* ITEMS FLUTUANTES */}
           {compare.Pokemon1 !== null && <Compare />}
-          {/* </CompareContext.Provider> */}
 
           <Pagination />
 

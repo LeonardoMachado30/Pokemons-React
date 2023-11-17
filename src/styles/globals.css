@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
+:root{
+  --background-default: background-image: url("/images/background_default.png")
+}
+
 :root {
   --color-primary: #0ea8e3;
   --color-secondary: #034159;
