@@ -1,3 +1,4 @@
+import { stringify } from "querystring";
 import { useState, useEffect } from "react";
 
 function Pagination() {
@@ -39,11 +40,11 @@ function Pagination() {
         } else {
           // return item === "<" ? _item - 1 : _item + 1;
         }
-      });
 
-      if (newPagination.includes(1)) {
-        setDisabled(true);
-      }
+        if (`${_item}`.includes("1")) {
+          setDisabled(true);
+        }
+      });
 
       setpaginationCount(newPagination);
       return;

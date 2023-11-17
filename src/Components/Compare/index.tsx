@@ -89,10 +89,10 @@ function Compare() {
             width={60}
             height={60}
           />
+          {/* 
+          {allowPokemon1 && <CompareInfo prop={comparison?.Pokemon1} />}
 
-          {allowPokemon1 && <CompareInfo prop={comparison.Pokemon1} />}
-
-          {allowPokemon2 && <CompareInfo prop={comparison.Pokemon2} />}
+          {allowPokemon2 && <CompareInfo prop={comparison?.Pokemon2} />} */}
 
           <Image
             src={Pokemon2?.sprite_front}

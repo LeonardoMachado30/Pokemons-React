@@ -11,7 +11,7 @@ import Historic from "@component/Historic";
 import Loading from "@component/Loading";
 import Compare from "@component/Compare";
 import Search from "@component/Search";
-import Info from "@component/Info";
+// import Info from "@component/Info";
 //UTILS
 import { CompareContext, PokemonContext } from "@utils/context";
 import getAutoComplete from "@utils/getAutoComplete";
@@ -29,7 +29,7 @@ export {
   axios,
   ListPokemon,
   Compare,
-  Info,
+  // Info,
   Loading,
   Pagination,
   Search,

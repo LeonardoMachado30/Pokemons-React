@@ -6,7 +6,6 @@ import {
   Pagination,
   Pokemons,
   Search,
-  Skeleton,
   SocialButtons,
   useState,
   IPokemons,
